@@ -14,9 +14,150 @@
   </a>
 </div>
 
-<div align="center">
 
 <br />
+
+## YunDo-Gi 기여 정리
+
+
+> [!NOTE]
+> - Repository: [https://github.com/boostcampwm2025/web12-plum](https://github.com/boostcampwm2025/web12-plum)
+> - Role: Frontend Engineer
+> - Focus: 실시간 인터랙션 설계 · 상태 구조 설계 · 성능 최적화
+
+</br>
+
+## 1. 실시간 인터랙션 아키텍처 설계
+
+### AI 기반 제스처 인식 구현
+
+PR: [https://github.com/boostcampwm2025/web12-plum/pull/147](https://github.com/boostcampwm2025/web12-plum/pull/147)
+
+* 실시간 제스처 인식 로직 구현
+* 추론 로직을 Web Worker에서 수행하도록 분리하여 메인 스레드 영향 최소화
+* 제스처 상태를 소켓 이벤트로 동기화
+* TTL 기반 알림 토스트 설계
+* 스토어 구독 범위 최소화로 불필요한 리렌더 제거
+
+**기여 포인트**
+
+* 실시간 추론과 UI 렌더링을 분리하는 구조 설계
+* 상태 변경 범위를 제어하여 렌더링 최적화
+* 실시간 인터랙션 UX 설계 경험
+
+### 발화자 감지 기반 정렬 시스템 구현
+
+PR: [https://github.com/boostcampwm2025/web12-plum/pull/382](https://github.com/boostcampwm2025/web12-plum/pull/382)
+
+* 발화 이벤트 기반 Grid 재정렬 로직 설계
+* 정렬 우선순위 정책 정의 (Presenter → SpeakerOrder → JoinedAt)
+* TTL 기반 하이라이팅 UX 설계
+* 이벤트 폭주 방지 및 UX 안정성 고려
+
+**기여 포인트**
+
+* 완전 동기화보다 UX 안정성을 우선하는 정책 설계
+* 실시간 이벤트 → 상태 → UI 반영 구조 설계
+* 인터랙션 중심 사용자 경험 설계
+
+</br>
+
+## 2. 상태 관리 및 구조 설계
+
+### 강의실 입장 및 미디어 상태 초기화 구조 개선
+
+PR:
+[https://github.com/boostcampwm2025/web12-plum/pull/93](https://github.com/boostcampwm2025/web12-plum/pull/93)
+
+* 공용 API 클라이언트 구조 설계
+* 입장 응답 기반 사용자/미디어 상태 초기화
+* 새로고침 시 세션 복구 처리
+* 제출 상태(isSubmitting) 기반 UX 처리
+
+**기여 포인트**
+
+* 요청-응답 흐름 표준화
+* 세션 기반 상태 복구 설계
+* 상태 초기화 타이밍 제어
+
+</br>
+
+## 3. 실시간 이벤트 기반 기능 구현
+
+### 투표 기능 소켓 이벤트 연결
+
+PR:
+[https://github.com/boostcampwm2025/web12-plum/pull/155](https://github.com/boostcampwm2025/web12-plum/pull/155)
+[https://github.com/boostcampwm2025/web12-plum/pull/186](https://github.com/boostcampwm2025/web12-plum/pull/186)
+
+* 투표 관리 UI 구현
+* 역할(발표자/참여자) 기반 상태 분리
+* 소켓 이벤트 기반 상태 동기화
+* 진행 상태에 따른 UI 분기 처리
+
+### Q&A 기능 실시간 연결 및 유지 처리
+
+PR:
+[https://github.com/boostcampwm2025/web12-plum/pull/211](https://github.com/boostcampwm2025/web12-plum/pull/211)
+[https://github.com/boostcampwm2025/web12-plum/pull/240](https://github.com/boostcampwm2025/web12-plum/pull/240)
+
+* Q&A 이벤트 리스너 등록/해제 구조 설계
+* 새로고침/지연 참여 시 상태 유지 처리
+* persist 기반 세션 저장 처리
+* 성공/실패 피드백 UX 설계
+
+**기여 포인트**
+
+* 실시간 이벤트 흐름 제어
+* 상태 지속성(persistence) 처리 경험
+* 역할 기반 UI 설계
+
+</br>
+
+## 4. 인터랙션 중심 UI 구조 설계
+
+### Participant Grid & Drag Interaction 구현
+
+PR:
+[https://github.com/boostcampwm2025/web12-plum/pull/71](https://github.com/boostcampwm2025/web12-plum/pull/71)
+[https://github.com/boostcampwm2025/web12-plum/pull/78](https://github.com/boostcampwm2025/web12-plum/pull/78)
+
+* ParticipantGrid / ParticipantVideo 구현
+* Drag & Drop + 사분면 스냅 로직 설계
+* rAF 기반 드래그 최적화
+* 페이지네이션 훅 구현
+* 레이아웃 애니메이션 적용
+
+**기여 포인트**
+
+* 인터랙션 중심 UI 설계
+* 이벤트 최적화 구조 설계
+* 컴포넌트 책임 분리 설계
+
+</br>
+
+## 5. 공용 컴포넌트 및 디자인 시스템 기반 구조
+
+### 공용 Button / Input 컴포넌트 설계
+
+PR:
+[https://github.com/boostcampwm2025/web12-plum/pull/29](https://github.com/boostcampwm2025/web12-plum/pull/29)
+[https://github.com/boostcampwm2025/web12-plum/pull/42](https://github.com/boostcampwm2025/web12-plum/pull/42)
+
+* variant 기반 스타일 구조 설계
+* 접근성(aria-label, 키보드 포커스) 고려
+* 테스트 코드 작성
+* 재사용 가능한 공용 UI 구조 설계
+
+**기여 포인트**
+
+* 디자인 시스템 기반 컴포넌트 설계
+* 테스트 가능한 컴포넌트 구조
+* 재사용성 중심 설계
+
+<br />
+
+<div align="center">
 
 # PLUM
 
